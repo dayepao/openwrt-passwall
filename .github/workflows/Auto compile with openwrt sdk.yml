@@ -43,7 +43,7 @@ jobs:
           echo "has_update=${has_update}" >> $GITHUB_OUTPUT
           echo "latest_version: ${latest_version}"
           echo "latest_release: ${latest_release}"
-          echo "has_update: true
+          echo "has_update: true"
 
       - name: Prepare release
         if: steps.check_version.outputs.has_update == 'true'
