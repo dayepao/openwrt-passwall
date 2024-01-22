@@ -4,21 +4,15 @@
 #
 name: "Auto compile with openwrt sdk"
 on:
-  repository_dispatch:
   workflow_dispatch:
     inputs:
       ssh:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
-  push:
-    branches:
-      - 'main'
-    paths:
-      - 'luci-app-passwall/Makefile'
 env:
   TZ: Asia/Shanghai
-  passwall: ${{ github.repository }}
+  passwall: xiaorouji/openwrt-passwall
   packages: xiaorouji/openwrt-passwall-packages
 
 
@@ -49,7 +43,7 @@ jobs:
           echo "has_update=${has_update}" >> $GITHUB_OUTPUT
           echo "latest_version: ${latest_version}"
           echo "latest_release: ${latest_release}"
-          echo "has_update: ${has_update}"
+          echo "has_update: true
 
       - name: Prepare release
         if: steps.check_version.outputs.has_update == 'true'
